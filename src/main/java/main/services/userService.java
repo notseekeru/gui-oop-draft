@@ -2,7 +2,7 @@ package main.services;
 
 import main.dao.userDao;
 
-public class UserService{
+public class userService{
 
     private final userDao userDao = new userDao();
 

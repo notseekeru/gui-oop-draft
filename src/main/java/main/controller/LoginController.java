@@ -1,6 +1,6 @@
 package main.controller;
 
-import main.services.UserService;
+import main.services.userService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -13,7 +13,7 @@ public class LoginController {
     @FXML private Button toggleBtn;
 
     private boolean isLoginMode = true;
-    private final UserService userService = new UserService();
+    private final userService userService = new userService();
 
     @FXML
     private void handlePrimary() {
