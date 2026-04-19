@@ -38,7 +38,7 @@ public class LoginController {
     public void initialize() {
         users.put("admin", "123456");
     }
-    
+
     @FXML
     private void handlePrimary() {
 
