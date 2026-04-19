@@ -1,1 +1,133 @@
-/* Styles, here no layout and no positioning */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #000000, #000000);
+}
+
+.container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: white;
+    color: black;
+}
+
+.brand-box {
+    width: 450px;
+    height: 420px;
+
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+
+    padding: 30px;
+}
+
+
+.brand-box img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+
+.brand-box h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+
+.brand-box p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+
+.login-container {
+    width: 360px;
+    padding: 35px;
+
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+
+    color: white;
+    text-align: center;
+}
+
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: white;
+    color: black;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.message {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+

@@ -179,6 +179,7 @@
                 <version>12.3.0</version>
                 <executions>
                     <execution>
+                        <?m2e execute onConfiguration?>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>migrate</goal>
@@ -248,7 +249,7 @@
                     </formats>
                 </configuration>
                 <executions>
-                    <execution>
+                    <execution> 
                         <id>spotless-check</id>
                         <phase>verify</phase>
                         <goals>
