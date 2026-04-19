@@ -15,10 +15,8 @@ import java.util.HashMap;
 public class LoginController {
 
     private HashMap<String, String> users = new HashMap<>();
-
     private boolean isLogin = true;
 
-    // ✅ 2. FXML COMPONENTS
     @FXML
     private Label modeLabel;
 
@@ -36,7 +34,7 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        users.put("admin", "123456");
+
     }
 
     @FXML
@@ -92,33 +90,31 @@ public class LoginController {
         toggleBtn.setText("Back to Login");
     }
 
-private void goToShop() {
-    try {
-        System.out.println("Attempting to load Shop.fxml...");
+    private void goToShop() {
+        try {
+            System.out.println("Attempting to load Shop.fxml...");
 
-        var resource = getClass().getResource("/view/Shop.fxml");
+            var resource = getClass().getResource("/view/Shop.fxml");
+            System.out.println("Resource: " + resource);
 
-        System.out.println("Resource: " + resource);
+            if (resource == null) {
+                System.out.println("❌ Shop.fxml NOT FOUND. Check path!");
+                return;
+            }
 
-        if (resource == null) {
-            System.out.println("❌ Shop.fxml NOT FOUND. Check path!");
-            return;
+            FXMLLoader loader = new FXMLLoader(resource);
+            Parent root = loader.load();
+
+            Stage stage = (Stage) primaryBtn.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Shop");
+            stage.show();
+
+            System.out.println("✅ Scene switched successfully");
+
+        } catch (Exception e) {
+            System.out.println("❌ ERROR LOADING SHOP:");
+            e.printStackTrace();
         }
-
-        FXMLLoader loader = new FXMLLoader(resource);
-        Parent root = loader.load();
-
-        Stage stage = (Stage) primaryBtn.getScene().getWindow();
-
-        stage.setScene(new Scene(root));
-        stage.setTitle("Shop");
-        stage.show();
-
-        System.out.println("✅ Scene switched successfully");
-
-    } catch (Exception e) {
-        System.out.println("❌ ERROR LOADING SHOP:");
-        e.printStackTrace();
     }
-}
 }
