@@ -35,6 +35,7 @@ code .
 ```bash
 ./mvnw clean javafx:run
 ./mvnw clean verify
+./mvnw spotless:apply
 ```
 
 ## Your Task and Responsibilities
