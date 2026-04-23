@@ -1,6 +1,7 @@
 # Architecture Diagrams
 
 > This document contains the architectural diagrams of the project. It is intended to provide a visual representation of the architecture and design of the project. It is not meant to be a detailed technical document, but rather a high-level overview of the architecture and design decisions made during the development of the project.
+> The diagrams are created using Mermaid, a simple markdown-like syntax for generating diagrams and flowcharts. The diagrams are included in the documentation to help developers understand the architecture and design of the project, and to provide a reference for future development and maintenance.
 
 ## Mermaid Diagrams
 

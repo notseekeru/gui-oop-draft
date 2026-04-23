@@ -137,7 +137,7 @@
                     <options>
                         <option>--enable-native-access=javafx.graphics</option>
                     </options>
-                    <mainClass>Launcher</mainClass>
+                    <mainClass>main.Launcher</mainClass>
                 </configuration>
             </plugin>
             <!-- Shade plugin to create an executable JAR with dependencies -->
@@ -155,7 +155,7 @@
                             <transformers>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Launcher</mainClass>
+                                    <mainClass>main.Launcher</mainClass>
                                 </transformer>
                             </transformers>
                             <filters>
@@ -224,8 +224,8 @@
                 <configuration>
                     <java>
                         <includes>
-                            <include>src/main/java/**/*.java</include>
-                            <include>src/test/java/**/*.java</include>
+                            <include>src/main/java/main/**/*.java</include>
+                            <include>src/test/java/main/**/*.java</include>
                         </includes>
                         <importOrder>
                             <order>java,javax,org,com</order>
@@ -239,8 +239,8 @@
                     <formats>
                         <format>
                             <includes>
-                                <include>src/main/java/**/*.java</include>
-                                <include>src/test/java/**/*.java</include>
+                                <include>src/main/java/main/**/*.java</include>
+                                <include>src/test/java/main/**/*.java</include>
                             </includes>
                             <trimTrailingWhitespace />
                             <endWithNewline />

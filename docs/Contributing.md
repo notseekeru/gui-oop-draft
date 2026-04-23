@@ -35,6 +35,7 @@ code .
 ```bash
 ./mvnw clean javafx:run
 ./mvnw clean verify
+./mvnw spotless:apply
 ```
 
 ## Your Task and Responsibilities
@@ -58,10 +59,7 @@ code .
 1. Start from a clean `main` branch.
    - **Note:** The `main` branch is protected. You cannot push directly to it. You must create a branch for your work.
    - Open the **Source Control** panel (left sidebar, or Ctrl+Shift+G).
-   - Make sure you have no unfinished changes (commit or discard them).
-   - Click the branch name (bottom left), switch to `main`.
    - Click the "..." menu (Right Beside Changes) in Source Control, choose **Pull** to get the latest code.
-   - Claim your task in the group chat before starting.
 
 2. Create a branch for your task.
    - Click the branch name (bottom left), then **Create new branch**.

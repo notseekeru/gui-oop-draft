@@ -2,6 +2,7 @@
 target/
 *.class
 dependency-reduced-pom.xml
+shop.db
 shopfx.db
 
 # NetBeans generated files

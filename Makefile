@@ -20,11 +20,22 @@ reset:
 	@if (Test-Path -Path target) { Remove-Item -Recurse -Force target }
 	@if (Test-Path -Path shopfx.db) { Remove-Item -Recurse -Force shopfx.db }
 	@if (Test-Path -Path dependency-reduced-pom.xml) { Remove-Item -Recurse -Force dependency-reduced-pom.xml }
+	
+
 run:
+ifeq ($(OS),Windows_NT)
+	mvnw.cmd javafx:run
+else
 	./mvnw javafx:run
+endif
+
 
 crun:
+ifeq ($(OS),Windows_NT)
+	mvnw.cmd clean javafx:run
+else
 	./mvnw clean javafx:run
+endif
 
 test:
 	./mvnw test
