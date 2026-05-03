@@ -5,15 +5,11 @@ import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.App;
-import main.controller.MainController.Product;
 
 public class MainController {
 
@@ -29,16 +25,8 @@ public class MainController {
     private TableColumn<Product, Double> priceColumn;
     @FXML
     private TableColumn<Product, Integer> stockColumn;
-    @FXML
-    private ListView<String> cartListView;
-    @FXML
-    private Label totalLabel;
-    @FXML
-    private Button checkoutButton;
 
     private final ObservableList<Product> products = FXCollections.observableArrayList();
-    private final ObservableList<String> cartItems = FXCollections.observableArrayList();
-    private double total = 0.0;
     private String currentUsername;
 
     // TODO: KURT ALISIN MO YUNG MGA DI KAILANGAN DITO, TANGALIN MO YUNG MAIN DASHBOARD ENTIRELY GUSTO KO BLANK LANG PARA KAY JUSTINE
@@ -89,49 +77,6 @@ public class MainController {
         );
 
         productTable.setItems(products);
-
-        //Double click to add to card feature <33
-        productTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                handleAddToCart();
-            }
-        });
-
-        cartListView.setItems(cartItems);
-        checkoutButton.setDisable(true); //enable only when cart has items
-    }
-
-    private void handleAddToCart() {
-        Product selected = productTable.getSelectionModel().getSelectedItem();
-        if (selected == null) {
-            return;
-        }
-
-        // cart logic
-        String cartEntry = selected.getName() + " -$" + selected.getPrice();
-        cartItems.add(cartEntry);
-        total += selected.getPrice();
-
-        totalLabel.setText("$" + String.format("%.2f", total));
-        checkoutButton.setDisable(false);
-    }
-
-    @FXML
-    private void handleCheckout() {
-        if (cartItems.isEmpty()) {
-            return;
-        }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Checkout");
-        alert.setHeaderText("Thank you for shopping with us, " + currentUsername + "!");
-        alert.setContentText("Total paid: $" + String.format("%2f", total)); //Note to Stephen : I suggest adding payment system --Kurt
-        alert.showAndWait();
-
-        cartItems.clear();
-        total = 0.0;
-        totalLabel.setText("$0.00");
-        checkoutButton.setDisable(true);
     }
 
     @FXML
