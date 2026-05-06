@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package main.model;
 
 public class userModel {
@@ -22,3 +23,6 @@ public class userModel {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 }
+=======
+
+>>>>>>> 9dd94d6bec931f10baf2406e8b985776663b3496
