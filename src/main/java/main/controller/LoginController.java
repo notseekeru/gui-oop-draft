@@ -1,5 +1,7 @@
 package main.controller;
 
+import java.io.IOException;
+import main.App;
 import main.services.userService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -30,6 +32,12 @@ public class LoginController {
             if (userService.login(username, password)) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
                 clearFields();
+                try {
+                    App.setRoot("dashboard");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load dashboard.");
+                }
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Invalid username or password!");
             }
