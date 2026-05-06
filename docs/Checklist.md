@@ -8,27 +8,27 @@
 
 ### Project Setup
 
-- [ ] Readme file created with project overview and needed documentation.
-- [ ] Layered Monolith project structure diagram created to outline the organization of the codebase. and how the different layers (UI, Controller, Service, DAO, Model) interact with each other.
-- [ ] ER Diagram created to visualize the database schema and relationships between entities.
-- [ ] Github main protected branch with required PR reviews and status checks.
-- [ ] GitHub Actions workflow set up for CI with JUnit, AssertJ, Spotless, SpotBugs, and Jacoco.
-- [ ] Maven wrapper configured for consistent build and dependency management across all environments.
-- [ ] JavaFX dependencies properly set up in the Maven `pom.xml` file.
+- [x] Readme file created with project overview and needed documentation.
+- [x] Layered Monolith project structure diagram created to outline the organization of the codebase. and how the different layers (UI, Controller, Service, DAO, Model) interact with each other.
+- [x] ER Diagram created to visualize the database schema and relationships between entities.
+- [x] Github main protected branch with required PR reviews and status checks.
+- [x] GitHub Actions workflow set up for CI with JUnit, AssertJ, Spotless, SpotBugs, and Jacoco.
+- [x] Maven wrapper configured for consistent build and dependency management across all environments.
+- [x] JavaFX dependencies properly set up in the Maven `pom.xml` file.
 
 ### Architectural Principles
 
-- [ ] Layered Monolith structure to keep the codebase organized and maintainable.
-- [ ] Clean Architecture with clear separation of concerns (UI, Controller, Service, DAO, Model; MVC + Service + Dao).
+- [x] Layered Monolith structure to keep the codebase organized and maintainable.
+- [x] Clean Architecture with clear separation of concerns (UI, Controller, Service, DAO, Model; MVC + Service + Dao).
 
 ### Technology Stack
 
-- [ ] Java 25 LTS + Maven + JavaFX for the application.
-- [ ] SQLite with JDBC for local database storage + Flyway for database migrations.
-- [ ] GitHub Flow for version control and collaboration.
-- [ ] GitHub Actions for CI with JUnit, AssertJ, Spotless, SpotBugs, and Jacoco.
-- [ ] jpackage for packaging the application for distribution.
-- [ ] Mermaid diagrams for visual documentation of architecture and design decisions.
+- [x] Java 25 LTS + Maven + JavaFX for the application.
+- [x] SQLite with JDBC for local database storage + Flyway for database migrations.
+- [x] GitHub Flow for version control and collaboration.
+- [x] GitHub Actions for CI with JUnit, AssertJ, Spotless, SpotBugs, and Jacoco.
+- [x] jpackage for packaging the application for distribution.
+- [x] Mermaid diagrams for visual documentation of architecture and design decisions.
 
 ### Security and Validation
 
@@ -45,8 +45,8 @@
 ### MVP - Minimum Viable Product (Required)
 
 - [ ] Session Context: The application should maintain a session context to track the logged-in user and their interactions across different screens.
-- [ ] Login Screen with username and password fields, and a login button. The login process should validate the credentials against the database and establish a session context upon successful authentication.
-- [ ] Registration Screen with username, password, confirm password fields, and a register button.
+- [x] Login Screen with username and password fields, and a login button. The login process should validate the credentials against the database and establish a session context upon successful authentication.
+- [x] Registration Screen with username, password, confirm password fields, and a register button.
 - [ ] Main Screen with a list of items with an add to cart button and a logout button.
 - [ ] Cart Screen with a list of items that have been added to the cart, quantity selectors, and a checkout button.
 - [ ] Checkout Screen with a summary of the order, payment options, and a confirm button.

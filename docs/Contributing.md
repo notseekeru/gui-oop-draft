@@ -5,7 +5,7 @@
 - Run these command below with windows `powershell`
 
 ```ps1
-   winget install --id Git.Git -e --source winget
+  winget install --id Git.Git -e --source winget
 
   winget install --id BellSoft.LibericaJDK.25.Full -e --source winget
 
