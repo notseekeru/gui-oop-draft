@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package main.services;
 
 import main.dao.userDao;
@@ -19,6 +18,3 @@ public class userService{
         userDao.ensureDatabaseExists();
     }
 }
-=======
-
->>>>>>> 9dd94d6bec931f10baf2406e8b985776663b3496
