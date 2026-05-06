@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.geometry.Insets?>
 
-<StackPane xmlns="http://javafx.oracle.com/javafx/11"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="main.controller.DashboardController"
-    stylesheets="@style.css">
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="main.controller.DashboardController"
+           stylesheets="@style.css">
 
-    <VBox alignment="CENTER" spacing="16" maxWidth="360">
+    <VBox alignment="TOP_CENTER" spacing="20" maxWidth="500">
 
-        <Label text="Welcome to the Dashboard!" />
+        <!-- Title -->
+        <Label text="Admin Dashboard" style="-fx-font-size: 20;" />
 
-        <Button text="Logout" onAction="#handleLogout" prefWidth="100" />
+        <!-- Stats -->
+        <HBox spacing="20" alignment="CENTER">
+
+            <VBox alignment="CENTER" style="-fx-background-color: lightblue; -fx-padding: 10;">
+                <Label text="Users"/>
+                <Label fx:id="usersLabel" text="0"/>
+            </VBox>
+
+            <VBox alignment="CENTER" style="-fx-background-color: lightgreen; -fx-padding: 10;">
+                <Label text="Products"/>
+                <Label fx:id="productsLabel" text="0"/>
+            </VBox>
+
+            <VBox alignment="CENTER" style="-fx-background-color: lightcoral; -fx-padding: 10;">
+                <Label text="Orders"/>
+                <Label fx:id="ordersLabel" text="0"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- Logout -->
+        <Button text="Logout"
+                onAction="#handleLogout"
+                prefWidth="120"/>
 
     </VBox>
 

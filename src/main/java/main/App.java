@@ -13,7 +13,7 @@ public class App extends Application {
     private static Scene scene;
 
     public static Object controller;
-// please gumana kana
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 680, 680);

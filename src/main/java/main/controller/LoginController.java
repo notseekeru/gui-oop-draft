@@ -22,32 +22,38 @@ public class LoginController {
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
 
+        // Basic validation
         if (username.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields!");
             return;
         }
 
         if (isLoginMode) {
-            // Login Mode
+            // LOGIN MODE
             if (userService.login(username, password)) {
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
+
                 clearFields();
+
                 try {
-                    App.setRoot("dashboard");
+                    // MAIN APPLICATION SCREEN
+                    App.setRoot("main");
                 } catch (IOException e) {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load main page.");
                     e.printStackTrace();
-                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load dashboard.");
                 }
+
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Invalid username or password!");
             }
+
         } else {
-            // Register Mode
+            // REGISTER MODE
             if (userService.register(username, password)) {
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Account created successfully! You can now login.");
-                handleToggle();
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Account created! You can now login.");
+                handleToggle(); // switch back to login mode
             } else {
-                showAlert(Alert.AlertType.ERROR, "Error", "Username already exists! Please choose a different one.");
+                showAlert(Alert.AlertType.ERROR, "Error", "Username already exists!");
             }
         }
     }
