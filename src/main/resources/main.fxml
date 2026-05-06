@@ -37,10 +37,11 @@
                     <Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
                 </padding>
                 <Label text="🛒 Your Cart" styleClass="section-title" />
+                <Label fx:id="cartCountLabel" text="Items: 0" />
                 <ListView fx:id="cartListView" prefHeight="300" />
                 <HBox spacing="10" alignment="CENTER">
                     <Label text="Total:" />
-                    <Label fx:id="totalLabel" text="\$0.00" styleClass="total" />
+                    <Label fx:id="totalLabel" text="₱0.00" styleClass="total" />
                 </HBox>
                 <Button fx:id="checkoutButton" text="Checkout" styleClass="big-button"
                     onAction="#handleCheckout" />

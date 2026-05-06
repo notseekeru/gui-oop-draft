@@ -1,10 +1,17 @@
 package main.controller;
 
 import java.io.IOException;
-import main.App;
 import main.services.userService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+// Added imports for scene switching and FXML loading
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -18,7 +25,7 @@ public class LoginController {
     private final userService userService = new userService();
 
     @FXML
-    private void handlePrimary() {
+    private void handlePrimary(ActionEvent event) { // Added ActionEvent so we can switch scenes
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
 
@@ -29,14 +36,27 @@ public class LoginController {
 
         if (isLoginMode) {
             // Login Mode
-            if (userService.login(username, password)) {
+            int userId = userService.login(username, password);
+            if (userId != -1) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
                 clearFields();
+
+                // Load cart.fxml after successful login
                 try {
-                    App.setRoot("dashboard");
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/cart.fxml"));
+                    Parent cartRoot = loader.load();
+
+                    // Pass current user to CartController
+                    main.controller.CartController cartController = loader.getController();
+                    cartController.setCurrentUser(userId);
+
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(cartRoot, 680, 680));
+                    stage.setTitle("ShopFX - Cart");
+                    stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load dashboard.");
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load cart: " + e.getMessage());
                 }
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Invalid username or password!");
@@ -80,10 +100,5 @@ public class LoginController {
     private void clearFields() {
         usernameField.clear();
         passwordField.clear();
-    }
-
-    @FXML
-    public void initialize() {
-        userService.ensureDatabaseExists();
     }
 }
