@@ -37,34 +37,26 @@ else
 	./mvnw clean javafx:run
 endif
 
-test:
-	./mvnw test
-
-flyi:
-	./mvnw flyway:info
-
-flym:
-	./mvnw flyway:migrate
-
-flycm:
-	./mvnw flyway:clean flyway:migrate
-
-flyc:
-	./mvnw flyway:clean
+spota:
+ifeq ($(OS),Windows_NT)
+	mvnw.cmd spotless:apply
+else
+	./mvnw clean javafx:run
+endif
 
 verify:
 	@if (Test-Path -Path target/dist) { Remove-Item -Recurse -Force target/dist }
-	./mvnw verify
+	mvnw.cmd verify
 
 cverify:
 	@if (Test-Path -Path target/dist) { Remove-Item -Recurse -Force target/dist }
-	./mvnw clean verify
+	mvnw.cmd clean verify
 
 depa:
-	./mvnw clean dependency:analyze
+	mvnw.cmd clean dependency:analyze
 
 dept:
-	./mvnw clean dependency:tree
+	mvnw.cmd clean dependency:tree
 
 make sure:
 	@echo $(JAVA_HOME)
@@ -75,6 +67,6 @@ package:
 
 	@if (Test-Path -Path $(DIST_DIR)) { Remove-Item -Recurse -Force $(DIST_DIR) }
 
-	./mvnw clean package
+	mvnw.cmd clean package
 
 	jpackage --type app-image --name "$(APP_NAME)" --input target --main-jar "$(APP_JAR)" --main-class "$(MAIN_CLASS)" --runtime-image "$$($$env:JAVA_HOME -replace '\\$$', '')" --dest "$(DIST_DIR)"
