@@ -44,11 +44,11 @@
 
 ### MVP - Minimum Viable Product (Required)
 
-- [ ] Session Context: The application should maintain a session context to track the logged-in user and their interactions across different screens.
+- [x] Session Context: The application should maintain a session context to track the logged-in user and their interactions across different screens.
 - [x] Login Screen with username and password fields, and a login button. The login process should validate the credentials against the database and establish a session context upon successful authentication.
 - [x] Registration Screen with username, password, confirm password fields, and a register button.
-- [ ] Main Screen with a list of items with an add to cart button and a logout button.
-- [ ] Cart Screen with a list of items that have been added to the cart, quantity selectors, and a checkout button.
+- [x] Store Screen with a list of items with an add to cart button and a logout button.
+- [x] Cart Screen with a list of items that have been added to the cart, quantity selectors, and a checkout button.
 - [ ] Checkout Screen with a summary of the order, payment options, and a confirm button.
 - [ ] Design: A visually appealing and user-friendly interface with consistent styling and responsive design.
 
