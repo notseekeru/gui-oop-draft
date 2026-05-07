@@ -49,7 +49,7 @@ public class LoginController {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
                 clearFields();
                 try {
-                    App.setRoot("store"); // Usually the next screen is store, there is no dashboard.fxml in resources
+                    App.setRoot("store");
                 } catch (IOException e) {
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to load main page.");
                     e.printStackTrace();
@@ -63,7 +63,8 @@ public class LoginController {
             // REGISTER MODE
             if (userService.register(username, password)) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Account created! You can now login.");
-                handleToggle(); // switch back to login mode
+                App.setRoot("login");
+                handleToggle();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Username already exists!");
             }
