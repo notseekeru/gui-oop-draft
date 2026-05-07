@@ -1,20 +1,20 @@
 package main.services;
 
-import main.dao.userDao;
+import main.dao.UserDao;
+import main.model.UserModel;
 
-public class userService{
+public class UserService {
 
-    private final userDao userDao = new userDao();
+    private final UserDao userDao = new UserDao();
 
-    public int login(String username, String password){
-        return userDao.authenticate(username,password);
+    public UserModel login(String username, String password) {
+        return userDao.authenticate(username, password);
     }
 
-    public boolean register(String username, String password){
-        return userDao.register(username, password);
-    }
-
-    public void ensureDatabaseExists() {
-        userDao.ensureDatabaseExists();
+    public boolean register(String username, String password) {
+        if (userDao.userExists(username)) {
+            return false;
+        }
+        return userDao.insertUser(username, password);
     }
 }

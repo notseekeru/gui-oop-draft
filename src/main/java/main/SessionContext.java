@@ -1,19 +1,19 @@
 package main;
 
-import main.model.userModel;
+import main.model.UserModel;
 
 public class SessionContext {
-    private static userModel currentUser;
+    private static UserModel currentUser;
 
     public static void clear() {
         currentUser = null;
     }
 
-    public static userModel getCurrentUser() {
+    public static UserModel getCurrentUser() {
         return currentUser;
     }
 
-    public static void setCurrentUser(userModel user) {
+    public static void setCurrentUser(UserModel user) {
         currentUser = user;
     }
 }

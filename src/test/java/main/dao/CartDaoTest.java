@@ -19,7 +19,6 @@ public class CartDaoTest {
     @BeforeEach
     public void setup() {
         cartDao = new CartDao();
-        cartDao.createTableIfNotExists();
         cartDao.clearCart(TEST_USER_ID);
     }
 

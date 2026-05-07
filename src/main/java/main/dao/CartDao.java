@@ -14,25 +14,6 @@ public class CartDao {
         return DriverManager.getConnection(DB_URL);
     }
 
-    // Ensure table exists
-    public void createTableIfNotExists() {
-        String sql = """
-            CREATE TABLE IF NOT EXISTS cart_items (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
-                product_id INTEGER NOT NULL,
-                quantity INTEGER NOT NULL DEFAULT 1,
-                UNIQUE(user_id, product_id)
-            )
-        """;
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     // Add product to cart (increment if exists)
     public void addToCart(int userId, int productId) {
         String sql = """

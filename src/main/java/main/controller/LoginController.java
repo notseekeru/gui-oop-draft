@@ -1,10 +1,10 @@
 package main.controller;
 
 import java.io.IOException;
-import main.services.userService;
+import main.services.UserService;
 import main.App;
 import main.SessionContext;
-import main.model.userModel;
+import main.model.UserModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -25,7 +25,7 @@ public class LoginController {
     @FXML private Button toggleBtn;
 
     private boolean isLoginMode = true;
-    private final userService userService = new userService();
+    private final UserService userService = new UserService();
 
     @FXML
     private void handlePrimary(ActionEvent event) { // Added ActionEvent so we can switch scenes
@@ -40,10 +40,9 @@ public class LoginController {
 
         if (isLoginMode) {
             // Login Mode
-            int userId = userService.login(username, password);
-            if (userId != -1) {
+            UserModel user = userService.login(username, password);
+            if (user != null) {
                 // Populate session context
-                userModel user = new userModel(userId, username, password);
                 SessionContext.setCurrentUser(user);
 
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
@@ -63,7 +62,11 @@ public class LoginController {
             // REGISTER MODE
             if (userService.register(username, password)) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Account created! You can now login.");
-                App.setRoot("login");
+                try {
+                    App.setRoot("login");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 handleToggle();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Username already exists!");

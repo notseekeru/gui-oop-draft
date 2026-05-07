@@ -1,8 +1,9 @@
 package main.dao;
 
+import main.model.UserModel;
 import java.sql.*;
 
-public class userDao {
+public class UserDao {
 
     private static final String DB_URL = "jdbc:sqlite:shopfx.db";
 
@@ -10,7 +11,7 @@ public class userDao {
         return DriverManager.getConnection(DB_URL);
     }
 
-     public int authenticate(String username, String password) {
+     public UserModel authenticate(String username, String password) {
         String sql = "SELECT user_id, password FROM users WHERE username = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -19,32 +20,31 @@ public class userDao {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 if (rs.getString("password").equals(password)) {
-                    return rs.getInt("user_id");
+                    return new UserModel(rs.getInt("user_id"), username, password);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
-    public boolean register(String username, String password) {
-        // Check if username exists
-        String checkSql = "SELECT username FROM users WHERE username = ?";
+    public boolean userExists(String username) {
+        String sql = "SELECT username FROM users WHERE username = ?";
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(checkSql)) {
-            if (stmt.executeQuery().next()) {
-                return false;
-            }
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            return stmt.executeQuery().next();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+    }
 
-        // Insert new user
-        String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    public boolean insertUser(String username, String password) {
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(insertSql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -53,22 +53,6 @@ public class userDao {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    public void ensureDatabaseExists() {
-        String sql = """
-            CREATE TABLE IF NOT EXISTS users (
-                user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username VARCHAR(50) NOT NULL UNIQUE,
-                password VARCHAR(50) NOT NULL
-            );
-            """;
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }
