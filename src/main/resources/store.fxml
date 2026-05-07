@@ -23,12 +23,19 @@
             <padding>
                 <Insets top="8" right="8" bottom="8" left="8" />
             </padding>
-            <FlowPane fx:id="productGrid" hgap="16" vgap="16" alignment="CENTER"
-                styleClass="product-grid">
-                <padding>
-                    <Insets top="16" right="16" bottom="16" left="16" />
-                </padding>
-            </FlowPane>
+            <VBox spacing="10" alignment="CENTER">
+                <FlowPane fx:id="productGrid" hgap="16" vgap="16" alignment="CENTER"
+                    styleClass="product-grid" prefWrapLength="1100">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16" />
+                    </padding>
+                </FlowPane>
+                <HBox spacing="20" alignment="CENTER">
+                    <Button fx:id="prevButton" text="Previous" onAction="#prevPage" disable="true" />
+                    <Label fx:id="pageLabel" text="Page 1" />
+                    <Button fx:id="nextButton" text="Next" onAction="#nextPage" />
+                </HBox>
+            </VBox>
         </ScrollPane>
     </center>
 

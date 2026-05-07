@@ -5,12 +5,14 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.controller.CartController">
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="main.controller.CartController">
 
     <!-- Top: Cart title only -->
     <top>
-        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+        <HBox spacing="10" alignment="CENTER_LEFT"
+            style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+            <Button text="← Back to Store" onAction="#handleBackToStore" />
             <Label text="Your Cart" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
         </HBox>
     </top>
@@ -22,11 +24,11 @@
                 <Label text="Your cart is empty." />
             </placeholder>
             <columns>
-                <TableColumn fx:id="nameCol" text="Product name" prefWidth="200"/>
-                <TableColumn fx:id="priceCol" text="Price" prefWidth="100"/>
-                <TableColumn fx:id="qtyCol" text="Quantity" prefWidth="80"/>
-                <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100"/>
-                <TableColumn fx:id="actionCol" text="Action" prefWidth="100"/>
+                <TableColumn fx:id="nameCol" text="Product name" prefWidth="200" />
+                <TableColumn fx:id="priceCol" text="Price" prefWidth="100" />
+                <TableColumn fx:id="qtyCol" text="Quantity" prefWidth="80" />
+                <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100" />
+                <TableColumn fx:id="actionCol" text="Action" prefWidth="100" />
             </columns>
         </TableView>
     </center>
