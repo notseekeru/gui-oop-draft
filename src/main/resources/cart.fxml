@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.controller.CartController">
+
+    <!-- Top: Cart title only -->
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+            <Label text="Your Cart" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+        </HBox>
+    </top>
+
+    <!-- Center: Table of items -->
+    <center>
+        <TableView fx:id="cartTable">
+            <placeholder>
+                <Label text="Your cart is empty." />
+            </placeholder>
+            <columns>
+                <TableColumn fx:id="nameCol" text="Product name" prefWidth="200"/>
+                <TableColumn fx:id="priceCol" text="Price" prefWidth="100"/>
+                <TableColumn fx:id="qtyCol" text="Quantity" prefWidth="80"/>
+                <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100"/>
+                <TableColumn fx:id="actionCol" text="Action" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Bottom: Total + Checkout button -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <Label fx:id="totalLabel" text="Total: ₱0.00" />
+            <Button text="Remove Selected" onAction="#handleRemove" />
+            <Button text="Checkout" onAction="#handleCheckout" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

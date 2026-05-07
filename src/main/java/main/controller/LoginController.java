@@ -1,10 +1,17 @@
 package main.controller;
 
 import java.io.IOException;
-import main.App;
 import main.services.userService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+// Added imports for scene switching and FXML loading
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -18,7 +25,7 @@ public class LoginController {
     private final userService userService = new userService();
 
     @FXML
-    private void handlePrimary() {
+    private void handlePrimary(ActionEvent event) { // Added ActionEvent so we can switch scenes
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
 
@@ -29,18 +36,17 @@ public class LoginController {
         }
 
         if (isLoginMode) {
-            // LOGIN MODE
-            if (userService.login(username, password)) {
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
-
+            // Login Mode
+            int userId = userService.login(username, password);
+            if (userId != -1) {
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
                 clearFields();
-
                 try {
-                    // MAIN APPLICATION SCREEN
-                    App.setRoot("main");
+                    App.setRoot("dashboard");
                 } catch (IOException e) {
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to load main page.");
                     e.printStackTrace();
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load dashboard.");
                 }
 
             } else {
@@ -86,10 +92,5 @@ public class LoginController {
     private void clearFields() {
         usernameField.clear();
         passwordField.clear();
-    }
-
-    @FXML
-    public void initialize() {
-        userService.ensureDatabaseExists();
     }
 }

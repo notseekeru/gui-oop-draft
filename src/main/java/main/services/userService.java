@@ -6,7 +6,7 @@ public class userService{
 
     private final userDao userDao = new userDao();
 
-    public boolean login(String username, String password){
+    public int login(String username, String password){
         return userDao.authenticate(username,password);
     }
 

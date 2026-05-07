@@ -10,20 +10,22 @@ public class userDao {
         return DriverManager.getConnection(DB_URL);
     }
 
-     public boolean authenticate(String username, String password) {
-        String sql = "SELECT password FROM users WHERE username = ?";
+     public int authenticate(String username, String password) {
+        String sql = "SELECT user_id, password FROM users WHERE username = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getString("password").equals(password);
+                if (rs.getString("password").equals(password)) {
+                    return rs.getInt("user_id");
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
 
     public boolean register(String username, String password) {

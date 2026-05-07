@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="main.controller.MainController"
+    stylesheets="@style.css">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="header">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="10.0" left="20.0" />
+            </padding>
+            <Label fx:id="welcomeLabel" text="Welcome to ShopFX" styleClass="welcome-label" />
+            <HBox spacing="20" alignment="CENTER_RIGHT">
+                <Button fx:id="logoutBtn" text="Logout" onAction="#handleLogout" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.65">
+            <TableView fx:id="productTable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="nameColumn" text="Product" prefWidth="200" />
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="100" />
+                    <TableColumn fx:id="stockColumn" text="Stock" prefWidth="80" />
+                </columns>
+            </TableView>
+
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
+                </padding>
+                <Label text="🛒 Your Cart" styleClass="section-title" />
+                <Label fx:id="cartCountLabel" text="Items: 0" />
+                <ListView fx:id="cartListView" prefHeight="300" />
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="Total:" />
+                    <Label fx:id="totalLabel" text="₱0.00" styleClass="total" />
+                </HBox>
+                <Button fx:id="checkoutButton" text="Checkout" styleClass="big-button"
+                    onAction="#handleCheckout" />
+            </VBox>
+        </SplitPane>
+    </center>
+
+</BorderPane>
