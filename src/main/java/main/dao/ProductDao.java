@@ -49,10 +49,10 @@ public class ProductDao {
 
     private Product map(ResultSet rs) throws SQLException {
         return new Product(
-                rs.getInt("id"),
+                rs.getInt("product_id"),
                 rs.getString("name"),
                 rs.getDouble("price"),
-                rs.getInt("stock")
+                rs.getInt("stock_quantity")
         );
     }
 }

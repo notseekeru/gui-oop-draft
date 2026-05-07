@@ -23,15 +23,26 @@ public class StoreController {
     private FlowPane productGrid;
     @FXML
     private Button cartButton;
+    @FXML
+    private Button prevButton;
+    @FXML
+    private Button nextButton;
+    @FXML
+    private Label pageLabel;
 
     private final ProductService productService = new ProductService();
     private final CartService cartService = new CartService();
+
+    private List<Product> allProducts;
+    private int currentPage = 0;
+    private static final int ITEMS_PER_PAGE = 25;
 
     @FXML
     private void initialize() {
         if (SessionContext.getCurrentUser() != null) {
             userLabel.setText("Hello, " + SessionContext.getCurrentUser().getUsername());
         }
+        allProducts = productService.findAll();
         loadProducts();
         updateCartLabel();
     }
@@ -39,10 +50,38 @@ public class StoreController {
     private void loadProducts() {
         if (productGrid != null) {
             productGrid.getChildren().clear();
-            List<Product> products = productService.findAll();
-            for (Product p : products) {
-                productGrid.getChildren().add(buildCard(p));
+            int start = currentPage * ITEMS_PER_PAGE;
+            int end = Math.min(start + ITEMS_PER_PAGE, allProducts.size());
+
+            for (int i = start; i < end; i++) {
+                productGrid.getChildren().add(buildCard(allProducts.get(i)));
             }
+
+            updatePaginationControls();
+        }
+    }
+
+    private void updatePaginationControls() {
+        if (prevButton != null && nextButton != null && pageLabel != null) {
+            prevButton.setDisable(currentPage == 0);
+            nextButton.setDisable((currentPage + 1) * ITEMS_PER_PAGE >= allProducts.size());
+            pageLabel.setText("Page " + (currentPage + 1));
+        }
+    }
+
+    @FXML
+    private void prevPage() {
+        if (currentPage > 0) {
+            currentPage--;
+            loadProducts();
+        }
+    }
+
+    @FXML
+    private void nextPage() {
+        if ((currentPage + 1) * ITEMS_PER_PAGE < allProducts.size()) {
+            currentPage++;
+            loadProducts();
         }
     }
 

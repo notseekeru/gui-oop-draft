@@ -1,11 +1,14 @@
 package main.controller;
 
+import java.io.IOException;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.App;
+import main.SessionContext;
 import main.model.CartItem;
 import main.services.CartService;
 
@@ -23,13 +26,12 @@ public class CartController {
     private ObservableList<CartItem> items;
     private int currentUserId; // use int instead of String
 
-    public void setCurrentUser(int userId) {
-        this.currentUserId = userId;
-        loadCart();
-    }
-
     @FXML
     private void initialize() {
+        if (SessionContext.getCurrentUser() != null) {
+            this.currentUserId = SessionContext.getCurrentUser().getUserId();
+        }
+
         nameCol.setCellValueFactory(new PropertyValueFactory<>("productName"));
         priceCol.setCellValueFactory(c -> new ReadOnlyStringWrapper(
                 String.format("₱%.2f", c.getValue().getProductPrice())));
@@ -54,7 +56,7 @@ public class CartController {
             }
         });
 
-        // don’t call loadCart() here until userId is set
+        loadCart();
     }
 
     private void loadCart() {
@@ -91,6 +93,11 @@ public class CartController {
             cartService.removeItem(selectedItem.getId());
             loadCart();
         }
+    }
+
+    @FXML
+    private void handleBackToStore() throws IOException {
+        App.setRoot("store");
     }
 
 }
