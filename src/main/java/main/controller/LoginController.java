@@ -42,14 +42,17 @@ public class LoginController {
             // Login Mode
             int userId = userService.login(username, password);
             if (userId != -1) {
+                // Populate session context
+                userModel user = new userModel(userId, username, password);
+                SessionContext.setCurrentUser(user);
+
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
                 clearFields();
                 try {
-                    App.setRoot("dashboard");
+                    App.setRoot("store"); // Usually the next screen is store, there is no dashboard.fxml in resources
                 } catch (IOException e) {
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to load main page.");
                     e.printStackTrace();
-                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to load dashboard.");
                 }
 
             } else {

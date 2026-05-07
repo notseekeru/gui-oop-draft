@@ -55,10 +55,8 @@ public class StoreController {
         name.getStyleClass().add("card-title");
         name.setWrapText(true);
 
-        Label desc = new Label(product.getDescription());
-        desc.getStyleClass().add("subtitle-label");
-        desc.setWrapText(true);
-        desc.setMaxHeight(40);
+        Label stock = new Label("Stock: " + product.getStock());
+        stock.getStyleClass().add("subtitle-label");
 
         Label price = new Label(String.format("$%.2f", product.getPrice()));
         price.getStyleClass().add("price-label");
@@ -67,18 +65,18 @@ public class StoreController {
         addBtn.setMaxWidth(Double.MAX_VALUE);
         addBtn.setOnAction(e -> {
             if (SessionContext.getCurrentUser() != null) {
-                cartService.addToCart(SessionContext.getCurrentUser().getId(), product.getId());
+                cartService.addToCart(SessionContext.getCurrentUser().getUserId(), product.getId());
                 updateCartLabel();
             }
         });
 
-        card.getChildren().addAll(name, desc, price, addBtn);
+        card.getChildren().addAll(name, stock, price, addBtn);
         return card;
     }
 
     private void updateCartLabel() {
         if (cartButton != null && SessionContext.getCurrentUser() != null) {
-            int count = cartService.getCartCount(SessionContext.getCurrentUser().getId());
+            int count = cartService.getCartCount(SessionContext.getCurrentUser().getUserId());
             cartButton.setText("Cart (" + count + ")");
         }
     }

@@ -51,7 +51,6 @@ public class ProductDao {
         return new Product(
                 rs.getInt("id"),
                 rs.getString("name"),
-                rs.getString("description"),
                 rs.getDouble("price"),
                 rs.getInt("stock")
         );
