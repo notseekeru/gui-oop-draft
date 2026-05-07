@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 
 <StackPane xmlns="http://javafx.com/javafx/17"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="main.controller.DashboardController"
-           stylesheets="@style.css">
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="main.controller.StoreController"
+    stylesheets="@style.css">
 
     <VBox alignment="TOP_CENTER" spacing="20" maxWidth="500">
 
@@ -20,26 +20,26 @@
         <HBox spacing="20" alignment="CENTER">
 
             <VBox alignment="CENTER" style="-fx-background-color: lightblue; -fx-padding: 10;">
-                <Label text="Users"/>
-                <Label fx:id="usersLabel" text="0"/>
+                <Label text="Users" />
+                <Label fx:id="usersLabel" text="0" />
             </VBox>
 
             <VBox alignment="CENTER" style="-fx-background-color: lightgreen; -fx-padding: 10;">
-                <Label text="Products"/>
-                <Label fx:id="productsLabel" text="0"/>
+                <Label text="Products" />
+                <Label fx:id="productsLabel" text="0" />
             </VBox>
 
             <VBox alignment="CENTER" style="-fx-background-color: lightcoral; -fx-padding: 10;">
-                <Label text="Orders"/>
-                <Label fx:id="ordersLabel" text="0"/>
+                <Label text="Orders" />
+                <Label fx:id="ordersLabel" text="0" />
             </VBox>
 
         </HBox>
 
         <!-- Logout -->
         <Button text="Logout"
-                onAction="#handleLogout"
-                prefWidth="120"/>
+            onAction="#handleLogout"
+            prefWidth="120" />
 
     </VBox>
 
