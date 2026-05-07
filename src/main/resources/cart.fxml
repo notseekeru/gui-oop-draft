@@ -28,7 +28,6 @@
                 <TableColumn fx:id="priceCol" text="Price" prefWidth="100" />
                 <TableColumn fx:id="qtyCol" text="Quantity" prefWidth="80" />
                 <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100" />
-                <TableColumn fx:id="actionCol" text="Action" prefWidth="100" />
             </columns>
         </TableView>
     </center>

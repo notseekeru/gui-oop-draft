@@ -39,23 +39,6 @@ public class CartController {
         subtotalCol.setCellValueFactory(c -> new ReadOnlyStringWrapper(
                 String.format("₱%.2f", c.getValue().getSubtotal())));
 
-        actionCol.setCellFactory(col -> new TableCell<>() {
-            private final Button btn = new Button("Remove");
-            {
-                btn.setOnAction(e -> {
-                    TableRow<CartItem> row = getTableRow();
-                    CartItem item = row.getItem();
-                    cartService.removeItem(item.getId());
-                    loadCart();
-                });
-            }
-            @Override
-            protected void updateItem(Void v, boolean empty) {
-                super.updateItem(v, empty);
-                setGraphic(empty ? null : btn);
-            }
-        });
-
         loadCart();
     }
 
