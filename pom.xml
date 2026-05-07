@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
-        <flyway.url>jdbc:sqlite:shopfx.db</flyway.url>
+        <flyway.url>jdbc:sqlite:shapora.db</flyway.url>
     </properties>
     <dependencies>
         <!-- JavaFX Controls module -->

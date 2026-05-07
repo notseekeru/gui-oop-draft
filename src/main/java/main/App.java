@@ -18,7 +18,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 920, 800);
         stage.setScene(scene);
-        stage.setTitle("ShopFX");
+        stage.setTitle("Shapora");
         stage.setMinWidth(300);
         stage.setMinHeight(300);
         stage.show();

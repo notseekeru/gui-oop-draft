@@ -3,7 +3,7 @@ target/
 *.class
 dependency-reduced-pom.xml
 shop.db
-shopfx.db
+shapora.db
 
 # NetBeans generated files
 nbactions.xml

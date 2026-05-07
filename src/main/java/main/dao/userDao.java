@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class UserDao {
 
-    private static final String DB_URL = "jdbc:sqlite:shopfx.db";
+    private static final String DB_URL = "jdbc:sqlite:shapora.db";
 
     private Connection getConnection() throws SQLException{
         return DriverManager.getConnection(DB_URL);

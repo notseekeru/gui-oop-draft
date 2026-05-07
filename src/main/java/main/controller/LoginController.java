@@ -45,7 +45,7 @@ public class LoginController {
                 // Populate session context
                 SessionContext.setCurrentUser(user);
 
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to ShopFX!");
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Login Successful! Welcome to Shapora!");
                 clearFields();
                 try {
                     App.setRoot("store");
