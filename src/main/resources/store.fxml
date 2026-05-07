@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.oracle.com/javafx/11"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="main.controller.StoreController"
+    stylesheets="@style.css" styleClass="screen-root">
+
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="14">
+            <Label text="Shapora" styleClass="title-label" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="userLabel" styleClass="subtitle-label" />
+            <Button fx:id="cartButton" text="Cart (0)" onAction="#openCart" />
+            <Button text="Logout" onAction="#logout" styleClass="btn-outline" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fx:id="scrollPane" styleClass="store-scroll">
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8" />
+            </padding>
+            <VBox spacing="10" alignment="CENTER">
+                <FlowPane fx:id="productGrid" hgap="16" vgap="16" alignment="CENTER"
+                    styleClass="product-grid" prefWrapLength="1100">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16" />
+                    </padding>
+                </FlowPane>
+                <HBox spacing="20" alignment="CENTER">
+                    <Button fx:id="prevButton" text="Previous" onAction="#prevPage" disable="true" />
+                    <Label fx:id="pageLabel" text="Page 1" />
+                    <Button fx:id="nextButton" text="Next" onAction="#nextPage" />
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

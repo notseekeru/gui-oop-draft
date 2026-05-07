@@ -18,7 +18,7 @@ DIST_DIR ?= target/dist
 
 reset:
 	@if (Test-Path -Path target) { Remove-Item -Recurse -Force target }
-	@if (Test-Path -Path shopfx.db) { Remove-Item -Recurse -Force shopfx.db }
+	@if (Test-Path -Path shapora.db) { Remove-Item -Recurse -Force shapora.db }
 	@if (Test-Path -Path dependency-reduced-pom.xml) { Remove-Item -Recurse -Force dependency-reduced-pom.xml }
 	
 
