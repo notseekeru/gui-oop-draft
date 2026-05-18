@@ -1,42 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.Insets?>
 
-<BorderPane xmlns="http://javafx.oracle.com/javafx/11"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="main.controller.StoreController"
-    stylesheets="@style.css" styleClass="screen-root">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.controller.StoreController"
+            stylesheets="@style.css"
+            styleClass="store-root">
+
+    <!-- TOP BAR -->
 
     <top>
-        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="14">
-            <Label text="Shapora" styleClass="title-label" />
-            <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="userLabel" styleClass="subtitle-label" />
-            <Button fx:id="cartButton" text="Cart (0)" onAction="#openCart" />
-            <Button text="Logout" onAction="#logout" styleClass="btn-outline" />
+        <HBox alignment="CENTER_LEFT"
+               spacing="15"
+               styleClass="store-topbar">
+
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="8">
+
+                <Region styleClass="logo-dot"/>
+
+                <Label text="SHOPORA"
+                       styleClass="logo-text"/>
+
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="userLabel"
+                   styleClass="welcome-label"/>
+
+            <Button fx:id="cartButton"
+                    text="Cart (0)"
+                    onAction="#openCart"
+                    styleClass="cart-button"/>
+
+            <Button text="Logout"
+                    onAction="#logout"
+                    styleClass="logout-button"/>
+
         </HBox>
     </top>
 
+    <!-- CENTER -->
+
     <center>
-        <ScrollPane fitToWidth="true" fx:id="scrollPane" styleClass="store-scroll">
+
+        <VBox spacing="20"
+              alignment="TOP_CENTER">
+
             <padding>
-                <Insets top="8" right="8" bottom="8" left="8" />
+                <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
-            <VBox spacing="10" alignment="CENTER">
-                <FlowPane fx:id="productGrid" hgap="16" vgap="16" alignment="CENTER"
-                    styleClass="product-grid" prefWrapLength="1100">
-                    <padding>
-                        <Insets top="16" right="16" bottom="16" left="16" />
-                    </padding>
-                </FlowPane>
-                <HBox spacing="20" alignment="CENTER">
-                    <Button fx:id="prevButton" text="Previous" onAction="#prevPage" disable="true" />
-                    <Label fx:id="pageLabel" text="Page 1" />
-                    <Button fx:id="nextButton" text="Next" onAction="#nextPage" />
-                </HBox>
+
+            <!-- HEADER -->
+
+            <VBox alignment="CENTER"
+                  spacing="8">
+
+                <Label text="Discover Products"
+                       styleClass="store-title"/>
+
+                <Label text="Find the best items for your everyday needs"
+                       styleClass="store-subtitle"/>
+
             </VBox>
-        </ScrollPane>
+
+            <!-- PRODUCTS -->
+
+            <ScrollPane fitToWidth="true"
+                        styleClass="store-scroll">
+
+                <content>
+
+                    <FlowPane fx:id="productGrid"
+                              alignment="CENTER"
+                              hgap="20"
+                              vgap="20"
+                              prefWrapLength="1100">
+
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+
+                    </FlowPane>
+
+                </content>
+
+            </ScrollPane>
+
+            <!-- PAGINATION -->
+
+            <HBox spacing="15"
+                   alignment="CENTER">
+
+                <Button fx:id="prevButton"
+                        text="Previous"
+                        onAction="#prevPage"
+                        styleClass="pagination-button"/>
+
+                <Label fx:id="pageLabel"
+                       text="Page 1"
+                       styleClass="page-label"/>
+
+                <Button fx:id="nextButton"
+                        text="Next"
+                        onAction="#nextPage"
+                        styleClass="pagination-button"/>
+
+            </HBox>
+
+        </VBox>
+
     </center>
 
 </BorderPane>
