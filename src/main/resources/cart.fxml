@@ -4,41 +4,114 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-    xmlns:fx="http://javafx.com/fxml"
-    fx:controller="main.controller.CartController">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.controller.CartController"
+            stylesheets="@style.css"
+            styleClass="cart-root">
 
-    <!-- Top: Cart title only -->
+    <!-- TOP BAR -->
+
     <top>
-        <HBox spacing="10" alignment="CENTER_LEFT"
-            style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
-            <Button text="← Back to Store" onAction="#handleBackToStore" />
-            <Label text="Your Cart" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <HBox alignment="CENTER_LEFT"
+               spacing="15"
+               styleClass="cart-topbar">
+
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+
+            <Button text="← Back"
+                    onAction="#handleBackToStore"
+                    styleClass="back-button"/>
+
+            <Label text="Your Cart"
+                   styleClass="cart-title"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="totalLabel"
+                   text="Total: $0.00"
+                   styleClass="cart-total"/>
+
         </HBox>
+
     </top>
 
-    <!-- Center: Table of items -->
+    <!-- CENTER -->
+
     <center>
-        <TableView fx:id="cartTable">
-            <placeholder>
-                <Label text="Your cart is empty." />
-            </placeholder>
-            <columns>
-                <TableColumn fx:id="nameCol" text="Product name" prefWidth="200" />
-                <TableColumn fx:id="priceCol" text="Price" prefWidth="100" />
-                <TableColumn fx:id="qtyCol" text="Quantity" prefWidth="80" />
-                <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100" />
-            </columns>
-        </TableView>
+
+        <VBox spacing="20">
+
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <TableView fx:id="cartTable"
+                       styleClass="cart-table">
+
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="10">
+
+                        <Label text="🛒"
+                               style="-fx-font-size: 42px;"/>
+
+                        <Label text="Your cart is empty."
+                               styleClass="empty-label"/>
+
+                    </VBox>
+                </placeholder>
+
+                <columns>
+
+                    <TableColumn fx:id="nameCol"
+                                 text="Product"
+                                 prefWidth="280"/>
+
+                    <TableColumn fx:id="priceCol"
+                                 text="Price"
+                                 prefWidth="140"/>
+
+                    <TableColumn fx:id="qtyCol"
+                                 text="Quantity"
+                                 prefWidth="120"/>
+
+                    <TableColumn fx:id="subtotalCol"
+                                 text="Subtotal"
+                                 prefWidth="160"/>
+
+                </columns>
+
+            </TableView>
+
+        </VBox>
+
     </center>
 
-    <!-- Bottom: Total + Checkout button -->
+    <!-- BOTTOM -->
+
     <bottom>
-        <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10;">
-            <Label fx:id="totalLabel" text="Total: ₱0.00" />
-            <Button text="Remove Selected" onAction="#handleRemove" />
-            <Button text="Checkout" onAction="#handleCheckout" />
+
+        <HBox alignment="CENTER_RIGHT"
+               spacing="15"
+               styleClass="cart-bottom-bar">
+
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+
+            <Button text="Remove Selected"
+                    onAction="#handleRemove"
+                    styleClass="remove-button"/>
+
+            <Button text="Checkout"
+                    onAction="#handleCheckout"
+                    styleClass="checkout-button"/>
+
         </HBox>
+
     </bottom>
 
 </BorderPane>
