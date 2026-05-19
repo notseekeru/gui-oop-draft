@@ -35,7 +35,7 @@ public class StoreController {
 
     private List<Product> allProducts;
     private int currentPage = 0;
-    private static final int ITEMS_PER_PAGE = 25;
+    private static final int ITEMS_PER_PAGE = 20;
 
     @FXML
     private void initialize() {
