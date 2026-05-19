@@ -1,5 +1,6 @@
 package main.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import main.services.ProductService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
@@ -90,6 +93,44 @@ public class StoreController {
         card.getStyleClass().add("product-card");
         card.setPrefWidth(200);
 
+        // PRODUCT IMAGE CONFIGURATION
+        ImageView imageView = new ImageView();
+        imageView.setFitWidth(200);
+        imageView.setFitHeight(150);
+        imageView.setPreserveRatio(true);
+        imageView.getStyleClass().add("card-image");
+
+        try {
+            String imageName = product.getImageUrl();
+            File imageFile = null;
+
+            if (imageName != null && !imageName.trim().isEmpty()) {
+                if (imageName.contains("assets/")) {
+                    imageFile = new File(imageName);
+                } else {
+                    imageFile = new File("assets/product_images/" + imageName);
+                }
+            }
+
+            if (imageFile != null && imageFile.exists()) {
+                Image img = new Image(imageFile.toURI().toString());
+                imageView.setImage(img);
+            } else {
+                throw new Exception("Image file not found on disk");
+            }
+        } catch (Exception e) {
+            try {
+                File placeholderFile = new File("assets/images/placeholder-image.png");
+                if (placeholderFile.exists()) {
+                    imageView.setImage(new Image(placeholderFile.toURI().toString()));
+                } else {
+                    System.out.println("Warning: Placeholder image file not found at project root assets/images/");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
         Label name = new Label(product.getName());
         name.getStyleClass().add("card-title");
         name.setWrapText(true);
@@ -109,7 +150,7 @@ public class StoreController {
             }
         });
 
-        card.getChildren().addAll(name, stock, price, addBtn);
+        card.getChildren().addAll(imageView, name, stock, price, addBtn);
         return card;
     }
 

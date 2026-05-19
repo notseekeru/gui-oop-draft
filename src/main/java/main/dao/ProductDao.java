@@ -34,7 +34,7 @@ public class ProductDao {
 
     public Product findById(int id) {
         try (Connection conn = getConnection();
-             PreparedStatement ps = conn.prepareStatement("SELECT * FROM products WHERE id = ?")) {
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM products WHERE product_id = ?")) { 
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -52,7 +52,8 @@ public class ProductDao {
                 rs.getInt("product_id"),
                 rs.getString("name"),
                 rs.getDouble("price"),
-                rs.getInt("stock_quantity")
+                rs.getInt("stock_quantity"),
+                rs.getString("image_url")
         );
     }
 }

@@ -14,7 +14,6 @@ public class CartDao {
         return DriverManager.getConnection(DB_URL);
     }
 
-    // Add product to cart (increment if exists)
     public void addToCart(int userId, int productId) {
         String sql = """
             INSERT INTO cart_items (user_id, product_id, quantity)
@@ -32,7 +31,6 @@ public class CartDao {
         }
     }
 
-    // Remove one cart item by its row id
     public void removeItem(int cartItemId) {
         String sql = "DELETE FROM cart_items WHERE id = ?";
         try (Connection conn = getConnection();
@@ -44,7 +42,6 @@ public class CartDao {
         }
     }
 
-    // Clear all items for a user
     public void clearCart(int userId) {
         String sql = "DELETE FROM cart_items WHERE user_id = ?";
         try (Connection conn = getConnection();
@@ -56,12 +53,11 @@ public class CartDao {
         }
     }
 
-    // Load cart items for a user
     public List<CartItem> getCartItems(int userId) {
         List<CartItem> items = new ArrayList<>();
         String sql = """
             SELECT ci.id, ci.user_id, ci.product_id, ci.quantity,
-                   p.product_id as p_id, p.name, p.price, p.stock_quantity
+                   p.product_id as p_id, p.name, p.price, p.stock_quantity, p.image_url
             FROM cart_items ci
             JOIN products p ON p.product_id = ci.product_id
             WHERE ci.user_id = ?
@@ -76,7 +72,8 @@ public class CartDao {
                         rs.getInt("p_id"),
                         rs.getString("name"),
                         rs.getDouble("price"),
-                        rs.getInt("stock_quantity")
+                        rs.getInt("stock_quantity"),
+                        rs.getString("image_url")
                     );
                     items.add(new CartItem(
                         rs.getInt("id"),
@@ -92,7 +89,6 @@ public class CartDao {
         return items;
     }
 
-    // Count total quantity for a user
     public int getCartCount(int userId) {
         String sql = "SELECT COALESCE(SUM(quantity), 0) FROM cart_items WHERE user_id = ?";
         try (Connection conn = getConnection();
