@@ -24,7 +24,7 @@ reset:
 
 run:
 ifeq ($(OS),Windows_NT)
-	mvnw.cmd javafx:run
+	.\mvnw.cmd javafx:run
 else
 	./mvnw javafx:run
 endif
@@ -32,31 +32,31 @@ endif
 
 crun:
 ifeq ($(OS),Windows_NT)
-	mvnw.cmd clean javafx:run
+	.\mvnw.cmd clean javafx:run
 else
 	./mvnw clean javafx:run
 endif
 
 spota:
 ifeq ($(OS),Windows_NT)
-	mvnw.cmd spotless:apply
+	.\mvnw.cmd spotless:apply
 else
 	./mvnw clean javafx:run
 endif
 
 verify:
 	@if (Test-Path -Path target/dist) { Remove-Item -Recurse -Force target/dist }
-	mvnw.cmd verify
+	.\mvnw.cmd verify
 
 cverify:
 	@if (Test-Path -Path target/dist) { Remove-Item -Recurse -Force target/dist }
-	mvnw.cmd clean verify
+	.\mvnw.cmd clean verify
 
 depa:
-	mvnw.cmd clean dependency:analyze
+	.\mvnw.cmd clean dependency:analyze
 
 dept:
-	mvnw.cmd clean dependency:tree
+	.\mvnw.cmd clean dependency:tree
 
 make sure:
 	@echo $(JAVA_HOME)

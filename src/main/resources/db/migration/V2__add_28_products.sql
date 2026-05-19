@@ -26,4 +26,4 @@ INSERT INTO products (name, description, price, stock_quantity) VALUES
 ('Flash Drive', '64GB USB 3.0', 18, 150),
 ('Microphone', 'USB condenser', 65, 45),
 ('Webcam', '1080p with privacy cover', 40, 60),
-('Office Chair', 'Ergonomic mesh', 150, 20),
+('Office Chair', 'Ergonomic mesh', 150, 20);
