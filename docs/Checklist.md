@@ -32,11 +32,11 @@
 
 ### Security and Validation
 
-- [ ] Input Validation: Ensure all user inputs are validated on to prevent invalid data and potential security vulnerabilities such as SQL Injection. Use `prepared statements` for all database interactions.
+- [x] Input Validation: Ensure all user inputs are validated on to prevent invalid data and potential security vulnerabilities such as SQL Injection. Use `prepared statements` for all database interactions.
 - [ ] Password Hashing: Use BCrypt to securely `hash and salt` user passwords before storing them in the database.
-- [ ] Error Handling: Implement comprehensive `error handling` to gracefully handle exceptions and provide user-friendly error messages.
+- [x] Error Handling: Implement comprehensive `error handling` to gracefully handle exceptions and provide user-friendly error messages.
 - [ ] Immutable Data Structures: Use immutable data structures where we don't want other data such as username to be changed after creation, only password can be updated only via `SQL update statement`, not by getter/setter methods.
-- [ ] Test Coverage: Aim for high test coverage with unit tests for all service and DAO methods, SQL Injection tests, and integration tests for critical user flows (e.g., registration, login, checkout).
+- [x] Test Coverage: Aim for high test coverage with unit tests for all service and DAO methods, SQL Injection tests, and integration tests for critical user flows (e.g., registration, login, checkout).
 
 ## Application Requirements
 
@@ -50,7 +50,7 @@
 - [x] Store Screen with a list of items with an add to cart button and a logout button.
 - [x] Cart Screen with a list of items that have been added to the cart, quantity selectors, and a checkout button.
 - [ ] Checkout Screen with a summary of the order, payment options, and a confirm button.
-- [ ] Design: A visually appealing and user-friendly interface with consistent styling and responsive design.
+- [x] Design: A visually appealing and user-friendly interface with consistent styling and responsive design.
 
 ### Extra Features (Optional)
 
@@ -58,7 +58,7 @@
 - [ ] Promotion Codes: Allow users to enter promo codes for discounts during checkout.
 - [ ] Product Search: A search bar on the main screen to filter items by name or category.
 - [ ] Product Categories: Organize items into categories (e.g., Electronics, Clothing) for easier browsing.
-- [ ] Product images: Display images for each product in the product list and product details view.
+- [x] Product images: Display images for each product in the product list and product details view.
 - [ ] Product Views: A screen when tapped, shows where users can view detailed information about a product, including images, descriptions, and reviews.
 - [ ] Product Reviews: Allow users to leave reviews and ratings for products they have purchased.
 - [ ] Payment methods: Support fake multiple payment options eg. Credit Card, Cash on Delivery, GCash, etc. (no real payment processing needed).
