@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(100) NOT NULL,
     description TEXT,
     price INTEGER NOT NULL,
-    stock_quantity INTEGER DEFAULT 10
+    stock_quantity INTEGER NOT NULL DEFAULT 10,
+    image_url VARCHAR(255)
 );
 
 -- CART_ITEMS TABLE
@@ -23,6 +24,7 @@ CREATE TABLE IF NOT EXISTS cart_items (
     quantity INTEGER DEFAULT 1,
     UNIQUE(user_id, product_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id),
+    FOREIGN KEY(product_id) REFERENCES products(product_id)
     FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
