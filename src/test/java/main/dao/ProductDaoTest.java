@@ -12,11 +12,8 @@ public class ProductDaoTest {
     public void testFindAllReturnsList() {
         ProductDao dao = new ProductDao();
 
-        // This will connect to shapora.db
-        // Depending on existing data, the list could be empty or not
         List<Product> products = dao.findAll();
 
         assertThat(products).isNotNull();
-        // Just verify execution didn't throw an exception and returned a proper list object
     }
 }

@@ -27,9 +27,9 @@ public class UserServiceTest {
     public void testRegisterExistingUserReturnsFalse() {
         UserService service = new UserService();
         String testUser = "existing_user";
-        service.register(testUser, "pass"); // register once
+        service.register(testUser, "pass");
 
-        boolean registeredAgain = service.register(testUser, "pass2"); // try again
+        boolean registeredAgain = service.register(testUser, "pass2");
         assertThat(registeredAgain).isFalse();
     }
 }

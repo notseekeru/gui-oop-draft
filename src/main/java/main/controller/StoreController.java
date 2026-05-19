@@ -91,13 +91,14 @@ public class StoreController {
     private VBox buildCard(Product product) {
         VBox card = new VBox(10);
         card.getStyleClass().add("product-card");
-        card.setPrefWidth(200);
+        card.setMaxWidth(200);
+        card.setMaxHeight(200);
 
         // PRODUCT IMAGE CONFIGURATION
         ImageView imageView = new ImageView();
         imageView.setFitWidth(200);
-        imageView.setFitHeight(150);
-        imageView.setPreserveRatio(true);
+        imageView.setFitHeight(200);
+        imageView.setPreserveRatio(false);
         imageView.getStyleClass().add("card-image");
 
         try {
