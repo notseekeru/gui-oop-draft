@@ -61,13 +61,24 @@ public class LoginController {
         } else {
             // REGISTER MODE
             if (userService.register(username, password)) {
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Account created! You can now login.");
-                try {
-                    App.setRoot("login");
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                UserModel user = userService.login(username, password);
+                
+                if (user != null) {
+                    SessionContext.setCurrentUser(user);
+                    
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Account created! Welcome to Shapora!");
+                    clearFields();
+                    
+                    try {
+                        App.setRoot("store");
+                    } catch (IOException e) {
+                        showAlert(Alert.AlertType.ERROR, "Error", "Failed to load main page.");
+                        e.printStackTrace();
+                    }
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Account created, but failed to start session.");
                 }
-                handleToggle();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Username already exists!");
             }
